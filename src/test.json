@@ -1,0 +1,59 @@
+[
+  {
+    "make": "Toyota",
+    "model": "Celica",
+    "price": 35000,
+    "soldOn": "2019-03-01T05:00:00.000Z",
+    "lease": false,
+    "address": "100 main st, Mars"
+  },
+  {
+    "make": "Porsche",
+    "model": "Boxter",
+    "price": 72000,
+    "soldOn": "2019-01-03T05:00:00.000Z",
+    "lease": true,
+    "address": "100 main st, Mars"
+  },
+  {
+    "make": "Ford",
+    "model": "Mondeo",
+    "price": 32000,
+    "soldOn": "2018-08-23T04:00:00.000Z",
+    "lease": false,
+    "address": "100 main st, Mars"
+  },
+  [
+    {
+      "make": "Tesla",
+      "model": "Model S",
+      "price": 90000,
+      "soldOn": "2021-11-01T04:00:00.000Z",
+      "lease": false,
+      "address": "132 Mazarn Ln, Cary NC"
+    }
+  ],
+  [
+    {
+      "make": "Tesla",
+      "model": "Model S",
+      "price": 90000,
+      "soldOn": "2021-11-01T04:00:00.000Z",
+      "lease": false,
+      "address": "132 Mazarn Ln, Cary NC"
+    }
+  ],
+  {
+    "command": "save",
+    "error": "asdf",
+    "errorResolution": "asdf",
+    "errorPath": "./helloworld/package.json",
+    "reporterEmail": "asdf@gmail.com"
+  },
+  {
+    "errorText": "asdf",
+    "errorResolution": "asdf",
+    "errorPath": "./helloworld/package.json",
+    "reporterEmail": "asdf@gmail.com"
+  }
+]
