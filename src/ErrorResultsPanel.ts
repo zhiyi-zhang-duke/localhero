@@ -145,7 +145,13 @@ export class ErrorResultsPanel {
 		this._panel.webview.html = this._getHtmlForWebview(webview, cats[catName]);
 	}
 
-	private _getHtmlForWebview(webview: vscode.Webview, catGifPath: string) {
+	public _updateErrorEntries(relevantErrorEntries: [object]){
+		const webview = this._panel.webview;
+
+		this._panel.webview.html = this._getHtmlForWebview(webview, cats["Coding Cat"], relevantErrorEntries);
+	}
+
+	private _getHtmlForWebview(webview: vscode.Webview, catGifPath: string, relevantErrorEntries?: Array<any>) {
 		// TODO: debug why this doesn't add the stylesheets the way the webView example does
 
 		// Local path to main script run in the webview
@@ -169,6 +175,36 @@ export class ErrorResultsPanel {
 		// Use a nonce to only allow specific scripts to be run
 		const nonce = getNonce();
 
+		let errors = ""
+		if(relevantErrorEntries && relevantErrorEntries.length){
+			relevantErrorEntries.forEach(function (errorEntry) {
+				errors += "<div>Error logs:</div>"
+				errors += "<code>"
+				errors += errorEntry.errorText
+				errors += "</code>"
+				errors += "</br>"
+
+				errors += "<div>Resolution</div>"
+				errors += "<p>"
+				errors += errorEntry.errorResolution
+				errors += "</p>"
+
+				errors += "<div>Relevant file:</div>"
+				errors += "<p>"
+				errors += errorEntry.errorPath
+				errors += "</p>"
+
+				errors += "<div>Reporter email:</div>"
+				errors += "<p>"
+				errors += errorEntry.reporterEmail
+				errors += "</p>"
+
+				errors += "</br>"
+			});
+		} else {
+			errors = "<p> Nothing, there's nothing </p>"
+		}
+
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
@@ -190,9 +226,7 @@ export class ErrorResultsPanel {
 			<body>
 				<h1>Errors by Relevance</h1>
 
-                <h1>Document Local Issue</h1>
-                <p> Nothing, there's nothing
-				</p>
+                <div id="errorResults">${errors}</div>
 				<script nonce="${nonce}" src="${scriptUri}"></script>
 			</body>
 			</html>`;

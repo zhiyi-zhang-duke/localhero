@@ -220,7 +220,6 @@ export class ErrorLogPanel {
                 <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
 				<script nonce="${nonce}" src="${scriptUri}"></script>
-                <script nonce="${nonce}" src="${jqueryUri}"></script>
 			</body>
 			</html>`;
 	}
