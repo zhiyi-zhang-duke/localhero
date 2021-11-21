@@ -6,20 +6,8 @@ const fuzzysort = require('fuzzysort')
 // const { FuzzySet } = require('fuzzyset')
 // import {FuzzySet} from "fuzzyset"
 
-export async function getInputTest() {
-    const result = await vscode.window.showInputBox({
-        value: 'nullpointerexception',
-        placeHolder: 'Copy and paste the keywords from your local environment error',
-        // validateInput: text => {
-        // 	window.showInformationMessage(`Validating: ${text}`);
-        // 	return text === '123' ? 'Not 123!' : null;
-        // }
-    });
-	return result 
-}
-
 export async function useErrorInputBox() {
-    const result = await vscode.window.showInputBox({
+    const error = await vscode.window.showInputBox({
         value: 'nullpointerexception',
         placeHolder: 'Copy and paste the keywords from your local environment error',
         // validateInput: text => {
@@ -27,10 +15,28 @@ export async function useErrorInputBox() {
         // 	return text === '123' ? 'Not 123!' : null;
         // }
     });
-	const errorEntries = await searchJsonFile(result!)   
+    return error
+	// const errorEntries = await searchJsonFile(result!)   
 }
 
 export async function searchJsonFile(errorSearch: string) {
+	let jsonPath = vscode.workspace.rootPath + '/.localhero.json'
+
+	if(fs.existsSync(jsonPath)){
+        const existingData = fs.readFileSync(jsonPath, 'utf-8')
+        let obj = JSON.parse(existingData);
+        // @ts-ignore
+        let errorTexts = obj.map((e:object) => e.errorText)
+        // @ts-ignore
+        const results = await fuzzysort.go(errorSearch, obj, {key:'errorText'})
+        let relevantErrorEntries = results.map(r => r.obj)
+        return relevantErrorEntries
+	} else {
+		return []
+	}
+}
+
+export async function searchJsonFileThenShowPanel(errorSearch: string) {
 	let jsonPath = vscode.workspace.rootPath + '/localhero.json'
 
 	if(fs.existsSync(jsonPath)){
@@ -47,7 +53,7 @@ export async function searchJsonFile(errorSearch: string) {
 
                 // @ts-ignore
                 let promise = fuzzysort.goAsync(errorSearch, obj, {key:'errorText'})
-                promise.then(results => {
+                promise.then((results: [object]) => {
                     // @ts-ignore
                     let relevantErrorEntries = results.map(r => r.obj)
                     const panel = vscode.window.createWebviewPanel(
@@ -68,7 +74,7 @@ export async function searchJsonFile(errorSearch: string) {
 	}
 }
 
-function getWebviewContent(errorEntries: Array<Object>) {
+function getWebviewContent(errorEntries: Array<any>) {
     let errors = ""
     errorEntries.forEach(function (errorEntry) {
         errors += "<div>Error logs:</div>"

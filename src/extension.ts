@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import { ErrorLogPanel } from "./ErrorLogPanel";
 import { ErrorResultsPanel } from "./ErrorResultsPanel";
-import { useErrorInputBox, getInputTest } from "./ErrorInputBox";
+import { useErrorInputBox, searchJsonFile } from "./ErrorInputBox";
 import { getWebviewOptions } from "./webviewUtil";
 import * as fs from 'fs';
 import { window } from 'vscode';
@@ -51,11 +51,13 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('localhero.searchError', async () => {
-			const result = await getInputTest()
+			const error = await useErrorInputBox()
 			// const results = await useErrorInputBox() //Display input box and searches input
 			// TODO: take the result of the searchJsonFile function and create the results via ErrorResultsPanel
-			console.log(`result is: ${result}`)
+			console.log(`error is: ${error}`)
 
+			const relevantErrorEntries = await searchJsonFile(error!)
+			console.log(`relevantErrorEntries is: ${relevantErrorEntries}`)
 			// ErrorResultsPanel.createOrShow(context.extensionUri, [])
 		})
 	);	
