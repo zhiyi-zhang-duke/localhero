@@ -108,7 +108,7 @@ function getWebviewContent(errorEntries: Array<any>) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Erro Results</title>
+        <title>Error Results</title>
     </head>
     <body>
         <h1>Error Results</h1>

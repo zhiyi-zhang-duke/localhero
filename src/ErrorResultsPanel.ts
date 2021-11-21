@@ -25,7 +25,7 @@ export class ErrorResultsPanel {
 
     
 
-	public static createOrShow(extensionUri: vscode.Uri, errorResults: Array<object>) {
+	public static createOrShow(extensionUri: vscode.Uri) {
 		const column = vscode.window.activeTextEditor
 			? vscode.window.activeTextEditor.viewColumn
 			: undefined;
@@ -159,10 +159,10 @@ export class ErrorResultsPanel {
 
 		// Local path to css styles
 		const styleResetPath = vscode.Uri.joinPath(this._extensionUri, 'media', 'reset.css');
-		console.log(`This is stylesResetUri: ${stylesResetUri}`)
 		const stylesPathMainPath = vscode.Uri.joinPath(this._extensionUri, 'media', 'vscode.css');
 
 		// Uri to load styles into webview
+
 		const stylesResetUri = webview.asWebviewUri(styleResetPath);
 		const stylesMainUri = webview.asWebviewUri(stylesPathMainPath);
 
@@ -194,7 +194,6 @@ export class ErrorResultsPanel {
                 <p> Nothing, there's nothing
 				</p>
 				<script nonce="${nonce}" src="${scriptUri}"></script>
-                <script nonce="${nonce}" src="${jqueryUri}"></script>
 			</body>
 			</html>`;
 	}

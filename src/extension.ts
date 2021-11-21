@@ -58,7 +58,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
 			const relevantErrorEntries = await searchJsonFile(error!)
 			console.log(`relevantErrorEntries is: ${relevantErrorEntries}`)
-			// ErrorResultsPanel.createOrShow(context.extensionUri, [])
+
+			ErrorResultsPanel.createOrShow(context.extensionUri)
 		})
 	);	
 
