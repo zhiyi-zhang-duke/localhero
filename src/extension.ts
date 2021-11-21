@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import { ErrorLogPanel } from "./ErrorLogPanel";
 import { ErrorResultsPanel } from "./ErrorResultsPanel";
-import { useErrorInputBox } from "./ErrorInputBox";
+import { useErrorInputBox, getInputTest } from "./ErrorInputBox";
 import { getWebviewOptions } from "./webviewUtil";
 import * as fs from 'fs';
 import { window } from 'vscode';
@@ -26,7 +26,7 @@ function getRelativePath() {
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
 	
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
@@ -50,10 +50,11 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 
 	context.subscriptions.push(
-		vscode.commands.registerCommand('localhero.searchError', () => {
-			const results = useErrorInputBox() //Display input box and searches input
-			// TODO: create panel out here instead of within useErrorInputBox()
-			console.log(`results is: ${results}`)
+		vscode.commands.registerCommand('localhero.searchError', async () => {
+			const result = await getInputTest()
+			// const results = await useErrorInputBox() //Display input box and searches input
+			// TODO: take the result of the searchJsonFile function and create the results via ErrorResultsPanel
+			console.log(`result is: ${result}`)
 
 			// ErrorResultsPanel.createOrShow(context.extensionUri, [])
 		})

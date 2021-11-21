@@ -6,6 +6,18 @@ const fuzzysort = require('fuzzysort')
 // const { FuzzySet } = require('fuzzyset')
 // import {FuzzySet} from "fuzzyset"
 
+export async function getInputTest() {
+    const result = await vscode.window.showInputBox({
+        value: 'nullpointerexception',
+        placeHolder: 'Copy and paste the keywords from your local environment error',
+        // validateInput: text => {
+        // 	window.showInformationMessage(`Validating: ${text}`);
+        // 	return text === '123' ? 'Not 123!' : null;
+        // }
+    });
+	return result 
+}
+
 export async function useErrorInputBox() {
     const result = await vscode.window.showInputBox({
         value: 'nullpointerexception',

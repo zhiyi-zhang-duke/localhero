@@ -146,6 +146,8 @@ export class ErrorResultsPanel {
 	}
 
 	private _getHtmlForWebview(webview: vscode.Webview, catGifPath: string) {
+		// TODO: debug why this doesn't add the stylesheets the way the webView example does
+
 		// Local path to main script run in the webview
 		const scriptPathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js');
 
