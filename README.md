@@ -4,32 +4,27 @@ This is the README for your extension "localhero". After writing up a brief desc
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+localhero is a simple vscode plugin that has two options: log error and search for existing errors
 
-For example if there is an image subfolder under your extension project workspace:
+log error creates a form to input local dev environment errors and other helpful details
 
-\!\[feature X\]\(images/feature-x.png\)
+search existing errors allows you search for dev environment errors that have been documented!
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+> As with any other vscode plugin: simply go to cmd + p and search for ">localhero"
+
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+If you would like to fork this repo, simply run:
+```
+npm install
+yarn watch
+# Press F5 to launch a new vscode workspace with the installed plugin
+```
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+TBD
 
 ## Release Notes
 
@@ -37,15 +32,7 @@ Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of localhero. Basic functionality of log error and search existing error should all be there.
 
 -----------------------------------------------------------------------------------------------------------
 ## Following extension guidelines
