@@ -65,5 +65,9 @@
 	"dependencies": {
 		"fuzzyset": "^1.0.7",
 		"fuzzysort": "^1.1.4"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zhiyi-zhang-duke/localhero.git"
 	}
 }
