@@ -1,6 +1,8 @@
 # localhero README
 
-This is the README for your extension "localhero". After writing up a brief description, we recommend including the following sections.
+Localhero is a simple vscode plugin to help you document dev environment errors on the go. Simply visit ">localhero:log error" to document your errors and ">localhero:Search Existing Errors" to find any previously documented errors.
+
+This plugin seems simple but with the power of a crowdsourced dev environment json file, you and your team should be able to get that troublesome dev environment to behave.
 
 ## Features
 

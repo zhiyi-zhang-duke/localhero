@@ -29,7 +29,7 @@ export async function searchJsonFile(errorSearch: string) {
         let errorTexts = obj.map((e:object) => e.errorText)
         // @ts-ignore
         const results = await fuzzysort.go(errorSearch, obj, {key:'errorText'})
-        let relevantErrorEntries = results.map(r => r.obj)
+        let relevantErrorEntries = results.map((r: any) => r.obj)
         return relevantErrorEntries
 	} else {
 		return []
