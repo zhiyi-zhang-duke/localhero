@@ -61,7 +61,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 			ErrorResultsPanel.createOrShow(context.extensionUri)
 			if(relevantErrorEntries || relevantErrorEntries.length){
-				ErrorResultsPanel.currentPanel._updateErrorEntries(relevantErrorEntries)
+				ErrorResultsPanel.currentPanel?._updateErrorEntries(relevantErrorEntries)
 			}
 		})
 	);	
